@@ -63,10 +63,6 @@ const Home = ( {netflixOriginals, trendingNow, topRated, actionMovies, comedyMov
 
       {showModal && <Modal />}
 
-
-      <footer className="">
-        
-      </footer>
     </div>
   )
 }

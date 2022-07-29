@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import { BellIcon, SearchIcon } from "@heroicons/react/outline";
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import useAuth from '../hooks/useAuth';
 import BasicMenu from './BasicMenu';
@@ -27,18 +26,14 @@ const Header = () => {
   }, [])
   
 
+  
   return (
     
     <header className={`${isScrolled && "bg-[#141414]"}`}>
 
       <div className='flex items-center space-x-2 md:space-x-10'>
-        <Image
-            src={"https://drive.google.com/uc?id=1kmfmWa4PipxfcVTJWQZ7lAsDOSUPa6Lv"}
-            alt="netflix logo"
-            width={568*0.2}
-            height={161*0.2}
-            className="cursor-pointer object-contain"
-        />
+        
+        <h1 className='text-3xl text-red-600 font-bold'>Movie App</h1>
       
         <BasicMenu />
 
