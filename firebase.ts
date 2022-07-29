@@ -13,7 +13,8 @@ const firebaseConfig = {
   projectId: "netflix-design",
   storageBucket: "netflix-design.appspot.com",
   messagingSenderId: "864111188901",
-  appId: "1:864111188901:web:2ecbf7eb2b4448e8cfa64c"
+  appId: "1:864111188901:web:2ecbf7eb2b4448e8cfa64c",
+  databaseURL: "https://netflix-design-default-rtdb.firebaseio.com/"
 };
 
 // Initialize Firebase
