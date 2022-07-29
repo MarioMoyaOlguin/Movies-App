@@ -1,11 +1,15 @@
 import Head from 'next/head'
-import Image from 'next/image'
+import { useRecoilValue } from 'recoil';
 
 import Header from '../components/Header'
 import Banner from '../components/Banner';
 import requests from '../utils/requests';
 import { Movie } from '../typings';
 import Row from '../components/Row';
+import useAuth from '../hooks/useAuth';
+import { modalState } from '../atoms/modalAtom';
+import Modal from '../components/Modal';
+import useList from '../hooks/useList';
 
 
 interface Props {
@@ -22,7 +26,11 @@ interface Props {
 
 const Home = ( {netflixOriginals, trendingNow, topRated, actionMovies, comedyMovies, horrorMovies, romanceMovies,documentaries}:Props ) => {
 
+  const {user, loading} = useAuth()
+  const showModal = useRecoilValue(modalState)
+  const list = useList(user?.uid)
 
+  if(loading) return null
 
   return (
     <div className="antialiased relative h-screen bg-gradient-to-b lg:h-[140vh]">
@@ -33,17 +41,17 @@ const Home = ( {netflixOriginals, trendingNow, topRated, actionMovies, comedyMov
 
       <Header />
       
-      <main className='relative pl-4 pb-24 lg:space-y-24 lg:pl-16'>
+      <main className='relative pl-4 pb-24 space-y-12 lg:space-y-24 lg:pl-16'>
 
         <Banner netflixOriginals={netflixOriginals} />
 
-        <section>
+        <section className='space-y-6'>
           <Row title="Trending Now" movies={trendingNow} />
           <Row title="Top Rated" movies={topRated} />
           <Row title="Action Thrillers" movies={actionMovies} />
 
           {/* My List Component */}
-          {/* {list.length > 0 && <Row title="My List" movies={list} />} */}
+          {list.length > 0 && <Row title="My List" movies={list} />}
 
           <Row title="Comedies" movies={comedyMovies} />
           <Row title="Scary Movies" movies={horrorMovies} />
@@ -52,6 +60,8 @@ const Home = ( {netflixOriginals, trendingNow, topRated, actionMovies, comedyMov
         </section>
 
       </main>
+
+      {showModal && <Modal />}
 
 
       <footer className="">
