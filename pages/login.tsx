@@ -75,7 +75,7 @@ const login = () => {
         </button>
 
         <div className='text-[gray]'>
-          New to Netflix?{" "}
+          New Here?{" "}
           <button type='submit' className='hover:underline text-white' onClick={() => setLogin(false)} >
             Sign up now
           </button>
